@@ -16,7 +16,11 @@
     [com.example.model.timezone :as timezone]
     [com.fulcrologic.rad.attributes :as rad.attr]
     [com.example.model.invoice :as invoice]
-    [com.wsscode.pathom.connect :as pc]))
+    [com.wsscode.pathom.core :as p]
+    [com.wsscode.pathom.connect :as pc]
+    [com.fulcrologic.rad.database-adapters.sql.vendor :as vendor]
+    [com.fulcrologic.rad.database-adapters.sql-options :as so]
+    [taoensso.timbre :as log]))
 
 (pc/defresolver index-explorer [{::pc/keys [indexes]} _]
   {::pc/input  #{:com.wsscode.pathom.viz.index-explorer/id}
@@ -31,7 +35,7 @@
   (pathom/new-parser config
     [(rad.attr/pathom-plugin all-attributes)
      (form/pathom-plugin save/middleware delete/middleware)
-     (sql/pathom-plugin (fn [_] {:production (:main pools/connection-pools)}))
+     (sql/pathom-plugin (fn [_] {:production (:main pools/connection-pools)}) config)
      (blob/pathom-plugin bs/temporary-blob-store {:files         bs/file-blob-store
                                                   :avatar-images bs/image-blob-store})]
     [automatic-resolvers

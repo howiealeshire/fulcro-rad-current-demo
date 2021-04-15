@@ -9,6 +9,8 @@
            com.taoensso/encore                    {:mvn/version "3.1.0"}
            com.fulcrologic/guardrails             {:mvn/version "0.0.12"}
 
+           org.postgresql/postgresql              {:mvn/version "42.2.8"}
+
            ;; Performance checks
            com.taoensso/tufte                     {:mvn/version "2.1.0"}
 
@@ -34,13 +36,17 @@
 
            :sql       {:extra-paths ["src/sql" "src/sql-tests"]
                        :extra-deps  {com.h2database/h2              {:mvn/version "1.4.199" :exclusions [org.slf4j/slf4j-nop]}
-                                     com.fulcrologic/fulcro-rad-sql {:mvn/version "0.0.2-alpha"}}}
+                                     com.fulcrologic/fulcro-rad-sql {:mvn/version "0.0.4-alpha"}}}
 
            :datomic   {:extra-paths ["src/datomic" "src/datomic-tests"]
                        :extra-deps  {com.datomic/datomic-free           {:mvn/version "0.9.5697" :exclusions [org.slf4j/slf4j-nop]}
                                      com.fulcrologic/fulcro-rad-datomic {:mvn/version "1.0.4"}}}
-           :datahike   {:extra-paths ["src/datahike" "src/datahike-tests"]
-                       :extra-deps  {io.replikativ/datahike         {:mvn/version "0.3.2" :exclusions [org.slf4j/slf4j-nop]}}}
+           :crux      {:extra-paths ["src/crux" "src/crux-tests"]
+                       :extra-deps {juxt/crux-core           {:mvn/version "21.02-1.15.0-beta"}
+                                    juxt/crux-rocksdb        {:mvn/version "21.02-1.15.0-beta"}
+                                    juxt/crux-jdbc           {:mvn/version "21.02-1.15.0-beta"}
+                                    roterski/fulcro-rad-crux {:mvn/version "0.0.1-alpha-1"}}}
+
            :run-tests {:main-opts  ["-m" "kaocha.runner"]
                        :extra-deps {lambdaisland/kaocha {:mvn/version "1.0.700"}}}
 
