@@ -20,7 +20,8 @@
     [com.example.model.item :as item]
     [com.wsscode.pathom.core :as p]
     [com.fulcrologic.rad.type-support.date-time :as dt]
-    [com.wsscode.pathom.connect :as pc]))
+    [com.wsscode.pathom.connect :as pc]
+    [com.example.model.song :as song]))
 
 (pc/defresolver index-explorer [{::pc/keys [indexes]} _]
                 {::pc/input  #{:com.wsscode.pathom.viz.index-explorer/id}
@@ -54,4 +55,5 @@
      item/resolvers
      sales/resolvers
      timezone/resolvers
+     song/resolvers
      index-explorer]))

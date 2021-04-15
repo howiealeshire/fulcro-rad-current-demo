@@ -19,6 +19,16 @@
       (mapv (fn [id] {:account/id id}) ids))
     (log/error "No database atom for production schema!")))
 
+(defn get-all-songs
+  [env query-params]
+  (if-let [db (some-> (get-in env [::datomic/databases :production]) deref)]
+    (let [ids (d/q '[:find [?id ...]
+                     :where
+                     [?e :song/id ?id]] db)]
+      (mapv (fn [id] {:song/id id}) ids))
+    (log/error "No database atom for production schema!")))
+
+
 (defn get-all-items
   [env {:category/keys [id]}]
   (if-let [db (some-> (get-in env [::datomic/databases :production]) deref)]

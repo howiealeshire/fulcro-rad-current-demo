@@ -59,6 +59,8 @@
                                  :item/category "Toys")
                                (seed/new-item (new-uuid 206) "Building Blocks" 24.99
                                  :item/category "Toys")
+                               (seed/new-song (new-uuid 212) "hello" "test" "really")
+                               (seed/new-song (new-uuid 213) "goodbye" "anti" "nope")
                                (seed/new-invoice "invoice-1" date-1 "Tony"
                                  [(seed/new-line-item "Doll" 1 5.0M)
                                   (seed/new-line-item "Hammer" 1 14.99M)])

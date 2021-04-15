@@ -39,6 +39,8 @@
            :datomic   {:extra-paths ["src/datomic" "src/datomic-tests"]
                        :extra-deps  {com.datomic/datomic-free           {:mvn/version "0.9.5697" :exclusions [org.slf4j/slf4j-nop]}
                                      com.fulcrologic/fulcro-rad-datomic {:mvn/version "1.0.4"}}}
+           :datahike   {:extra-paths ["src/datahike" "src/datahike-tests"]
+                       :extra-deps  {io.replikativ/datahike         {:mvn/version "0.3.2" :exclusions [org.slf4j/slf4j-nop]}}}
            :run-tests {:main-opts  ["-m" "kaocha.runner"]
                        :extra-deps {lambdaisland/kaocha {:mvn/version "1.0.700"}}}
 

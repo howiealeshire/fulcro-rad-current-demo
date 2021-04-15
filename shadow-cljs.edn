@@ -43,4 +43,3 @@
                                           :external-config {:guardrails {:throw? true :emit-spec? true}}}
                        :output-to        "target/ci.js"
                        :ns-regexp        "-spec$"}}}
-

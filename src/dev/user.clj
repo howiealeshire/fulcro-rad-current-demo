@@ -9,4 +9,3 @@
     [taoensso.timbre :as log]))
 
 (alter-var-root #'s/*explain-out* (constantly expound/printer))
-

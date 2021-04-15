@@ -9,6 +9,7 @@
     [com.example.ui.invoice-forms :refer [InvoiceForm InvoiceList AccountInvoices]]
     [com.example.ui.item-forms :refer [ItemForm InventoryReport]]
     [com.example.ui.line-item-forms :refer [LineItemForm]]
+    [com.example.ui.song-forms :refer [SongForm SongList]]
     [com.example.ui.login-dialog :refer [LoginForm]]
     [com.example.ui.sales-report :as sales-report]
     [com.example.ui.dashboard :as dashboard]
@@ -32,7 +33,7 @@
 ;; This will just be a normal router...but there can be many of them.
 (defrouter MainRouter [this {:keys [current-state route-factory route-props]}]
   {:always-render-body? true
-   :router-targets      [LandingPage ItemForm InvoiceForm InvoiceList AccountList AccountForm AccountInvoices
+   :router-targets      [LandingPage ItemForm InvoiceForm InvoiceList AccountList AccountForm SongForm SongList AccountInvoices
                          sales-report/SalesReport InventoryReport
                          sales-report/RealSalesReport
                          dashboard/Dashboard]}
@@ -71,6 +72,10 @@
                  (ui-dropdown-menu {}
                    (ui-dropdown-item {:onClick (fn [] (rroute/route-to! this AccountList {}))} "View All")
                    (ui-dropdown-item {:onClick (fn [] (form/create! this AccountForm))} "New")))
+               (ui-dropdown {:className "item" :text "Song"}
+                            (ui-dropdown-menu {}
+                                              (ui-dropdown-item {:onClick (fn [] (rroute/route-to! this SongList {}))} "View All")
+                                              (ui-dropdown-item {:onClick (fn [] (form/create! this SongForm))} "New")))
                (ui-dropdown {:className "item" :text "Inventory"}
                  (ui-dropdown-menu {}
                    (ui-dropdown-item {:onClick (fn [] (rroute/route-to! this InventoryReport {}))} "View All")

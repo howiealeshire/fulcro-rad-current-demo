@@ -42,6 +42,18 @@
      :category/label label}
     extras))
 
+(defn new-song
+  "Seed helper. Uses label for tempid purposes."
+  [id name artist album & {:as extras}]
+  (merge
+    {:db/id      name
+     :song/id    id
+     :song/name  name
+     :song/artist artist
+     :song/album album
+     }
+    extras))
+
 (defn new-item
   "Seed helper. Uses street at db/id for tempid purposes."
   [id name price & {:as extras}]
